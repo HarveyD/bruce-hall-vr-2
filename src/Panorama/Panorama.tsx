@@ -7,6 +7,7 @@ declare var window: any;
 
 interface IProps {
   selectedLocation: ILocationDetails;
+  backEvent(): void;
 }
 
 interface IState {
@@ -22,16 +23,18 @@ class Panorama extends React.Component<IProps, IState> {
   }
 
   public componentDidMount(): void {
-    this.setState(() => {
-      return {
-        selectedLocation: this.props.selectedLocation,
-        viewer: window.pannellum.viewer('panorama', {
-          autoLoad: true,
-          panorama: this.props.selectedLocation.imgUrl,
-          type: "equirectangular"
-        })
-      }
-    });
+    setTimeout(() => {
+      this.setState(() => {
+        return {
+          selectedLocation: this.props.selectedLocation,
+          viewer: window.pannellum.viewer('panorama', {
+            autoLoad: true,
+            panorama: this.props.selectedLocation.vrImgName,
+            type: "equirectangular"
+          })
+        }
+      });
+    }, 500);
   }
 
   public componentDidUpdate(prevProps: IProps, prevState: IState): IState {
@@ -41,21 +44,22 @@ class Panorama extends React.Component<IProps, IState> {
       selectedLocation: this.props.selectedLocation,
       viewer: window.pannellum.viewer('panorama', {
         autoLoad: true,
-        panorama: this.props.selectedLocation.imgUrl,
+        panorama: this.props.selectedLocation.vrImgName,
         type: "equirectangular"
       })
     }
   }
 
   public goBack(): void {
-    // tslint:disable-next-line:no-console
-    console.log('goback');
+    this.props.backEvent();
   }
 
   public render() {
     return (
-      <div id="panorama">
-        <button onClick={this.goBack}> Go back</button>
+      <div>
+        {/* <span className="title"> { this.props.selectedLocation.name } </span> */}
+        <button className="back-button" onClick={this.goBack}> Go back </button>
+        <div id="panorama"/>
       </div>
     );
   }

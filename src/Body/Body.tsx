@@ -1,6 +1,5 @@
 import * as React from 'react';
 
-// import { Pannellum } from '360-react-pannellum'
 import Location, { ILocationDetails } from '../Location/Location';
 import Panorama from '../Panorama/Panorama';
 
@@ -12,24 +11,42 @@ interface IState {
 
 class Body extends React.Component<{}, IState> {
   public locations: ILocationDetails[] = [
-    { name: 'North Quad', width: 'half', imgUrl: 'https://pannellum.org/images/alma.jpg' },
-    { name: 'South Quad', width: 'half', imgUrl: 'https://pannellum.org/images/tocopilla.jpg' }
+    { name: 'North Quad', width: 'half', animationDirection: 'left', vrImgName: 'https://pannellum.org/images/alma.jpg' },
+    { name: 'Dining Hall', width: 'half', animationDirection: 'right', vrImgName: 'https://pannellum.org/images/alma.jpg' },
+    { name: 'South Quad', width: 'half', animationDirection: 'left', vrImgName: 'https://pannellum.org/images/tocopilla.jpg' },
+    { name: 'Reception', width: 'half', animationDirection: 'right', vrImgName: 'https://pannellum.org/images/tocopilla.jpg' },
+    { name: 'Packard Quad', width: 'half', animationDirection: 'left', vrImgName: 'https://pannellum.org/images/tocopilla.jpg' },
+    { name: 'Extension Lawn', width: 'half', animationDirection: 'right', vrImgName: 'https://pannellum.org/images/tocopilla.jpg' },
+    { name: 'Front of Bruce Hall', width: 'full', animationDirection: 'bottom', vrImgName: 'https://pannellum.org/images/tocopilla.jpg' }
   ];
 
   constructor(props: any) {
     super(props);
     
     this.handleLocationClick = this.handleLocationClick.bind(this);
+    this.handleBackClick = this.handleBackClick.bind(this);
 
     this.state = {
-      selectedLocation: {} as ILocationDetails
+      selectedLocation: { } as ILocationDetails
     }
   }
 
-  public handleLocationClick(location: ILocationDetails) {
+  public handleLocationClick(location: ILocationDetails): void {
     this.setState(prevState => {
       return {
         selectedLocation: location
+      }
+    });
+  }
+
+  public hasSelectedLocation(): boolean {
+    return Object.keys(this.state.selectedLocation).length > 0;
+  }
+
+  public handleBackClick(): void {
+    this.setState(prevState => {
+      return {
+        selectedLocation: { } as ILocationDetails
       }
     });
   }
@@ -38,14 +55,16 @@ class Body extends React.Component<{}, IState> {
     const locations = this.locations.map(location => {
       return <Location 
         key={location.name} 
-        locationDetails={location} 
+        locationDetails={location}
+        visible={!this.hasSelectedLocation()}
         handleClick={this.handleLocationClick} />
     });
 
     return (
       <div className="body">
         { locations }
-        { Object.keys(this.state.selectedLocation).length > 0 && <Panorama selectedLocation={this.state.selectedLocation}/> }
+        { this.hasSelectedLocation()
+          && <Panorama backEvent={this.handleBackClick} selectedLocation={this.state.selectedLocation}/> }
       </div>
     );
   }
