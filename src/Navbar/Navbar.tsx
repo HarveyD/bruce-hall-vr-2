@@ -6,28 +6,20 @@ interface IProps {
   goBack(): void;
 }
 
-class Navbar extends React.Component<IProps, {}> {
-  constructor(props: IProps) {
-    super(props);
-
-    this.goBackEvent = this.goBackEvent.bind(this);
+function Navbar(props: IProps) {
+  const goBackEvent = (): void => { 
+    props.goBack(); 
   }
 
-  public goBackEvent(): void {
-    this.props.goBack();
-  }
-
-  public render() {
-    return (
-      <div className="navbar">
-        <div className="title"> { this.props.locationTitle ? this.props.locationTitle : 'Bruce Hall VR Tour' } </div>
-        {
-          this.props.locationTitle &&
-          <button className="back-button" onClick={ this.goBackEvent }> Back </button>
-        }
-      </div>
-    );
-  }
+  return (
+    <div className="navbar">
+      <div className="title"> { props.locationTitle ? props.locationTitle : 'Bruce Hall VR Tour' } </div>
+      {
+        props.locationTitle &&
+        <button className="back-button" onClick={ goBackEvent }> Back </button>
+      }
+    </div>
+  );
 }
 
 export default Navbar;

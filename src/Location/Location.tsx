@@ -14,40 +14,28 @@ export interface ILocationDetails {
   animationDirection: string;
 }
 
-class Location extends React.Component<IProps, {}> {
-  constructor(props: IProps) {
-    super(props);
-
-    this.locationClickEvent = this.locationClickEvent.bind(this);
-    this.animationEnded = this.animationEnded.bind(this);
+function Location(props: IProps) {
+  const transitionEnded = (event: any): void => {
+    console.log(event.propertyName);
   }
 
-  public animationEnded(): void {
-    console.log('animation ended');
+  const locationClickEvent = (): void => {
+    props.handleClick(props.locationDetails);
   }
 
-  public locationClickEvent() {
-    this.props.handleClick(this.props.locationDetails);
-  }
+  const getPosition = () => props.visible 
+    ? ''
+    : props.locationDetails.animationDirection;
 
-  public getPosition(): string {
-    return this.props.visible
-      ? ''
-      : this.props.locationDetails.animationDirection;
-  }
+  const { name, width } = props.locationDetails;
+  const previewImage = require(`../assets/preview/${props.locationDetails.vrImgName}.jpg`);
 
-  public render() {
-    const { name, width } = this.props.locationDetails;
-
-    const previewImage = require(`../assets/preview/${this.props.locationDetails.vrImgName}.jpg`);
-
-    return (
-      <div onTransitionEnd={this.animationEnded} style={{ backgroundImage: `url(${previewImage})`}} className={`location ${width} ${this.getPosition()}`} onClick={(this.locationClickEvent)}>
-        <div className="overlay"/>
-        <div className="preview-name"> { name } </div>
-      </div>
-    );
-  }
+  return (
+    <div onTransitionEnd={transitionEnded} style={{ backgroundImage: `url(${previewImage})`}} className={`location ${width} ${getPosition()}`} onClick={(locationClickEvent)}>
+      <div className="overlay"/>
+      <div className="preview-name"> { name } </div>
+    </div>
+  );
 }
 
 export default Location;

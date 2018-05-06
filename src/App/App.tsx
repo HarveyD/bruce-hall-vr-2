@@ -11,31 +11,14 @@ interface IState {
 }
 
 class App extends React.Component<{}, IState> {
-  constructor(props: any) {
-    super(props);
+  public state = { selectedLocation: { } as ILocationDetails };
 
-    this.state = {
-      selectedLocation: { } as ILocationDetails
-    };
-
-    this.selectLocation = this.selectLocation.bind(this);
-    this.resetLocation = this.resetLocation.bind(this);
+  public selectLocation = (location: ILocationDetails): void => {
+    this.setState({ selectedLocation: location });
   }
 
-  public selectLocation(location: ILocationDetails): void {
-    this.setState(prevState => {
-      return {
-        selectedLocation: location
-      }
-    });
-  }
-
-  public resetLocation(): void {
-    this.setState(prevState => {
-      return {
-        selectedLocation: { } as ILocationDetails
-      }
-    })
+  public resetLocation = (): void => {
+    this.setState({ selectedLocation: { } as ILocationDetails });
   }
 
   public render() {

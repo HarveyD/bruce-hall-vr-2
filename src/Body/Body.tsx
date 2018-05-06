@@ -13,22 +13,16 @@ interface IProps {
 
 class Body extends React.Component<IProps, {}> {
   public locations: ILocationDetails[] = [
-    { name: 'North Quad', width: 'half', animationDirection: Constants.Left, vrImgName: 'north-quad' },
-    { name: 'Dining Hall', width: 'half', animationDirection: Constants.Right, vrImgName: 'dining-hall' },
-    { name: 'South Quad', width: 'half', animationDirection: Constants.Left, vrImgName: 'south-quad' },
-    { name: 'Reception', width: 'half', animationDirection: Constants.Right, vrImgName: 'reception' },
-    { name: 'Packard Quad', width: 'half', animationDirection: Constants.Left, vrImgName: 'pac-quad' },
-    { name: 'Extension Lawn', width: 'half', animationDirection: Constants.Right, vrImgName: 'extension-lawn' },
-    { name: 'Front of Bruce Hall', width: 'full', animationDirection: Constants.Down, vrImgName: 'front' }
+    { name: 'North Quad', width: Constants.Half, animationDirection: Constants.Left, vrImgName: 'north-quad' },
+    { name: 'Dining Hall', width: Constants.Half, animationDirection: Constants.Right, vrImgName: 'dining-hall' },
+    { name: 'South Quad', width: Constants.Half, animationDirection: Constants.Left, vrImgName: 'south-quad' },
+    { name: 'Reception', width: Constants.Half, animationDirection: Constants.Right, vrImgName: 'reception' },
+    { name: 'Packard Quad', width: Constants.Half, animationDirection: Constants.Left, vrImgName: 'pac-quad' },
+    { name: 'Extension Lawn', width: Constants.Half, animationDirection: Constants.Right, vrImgName: 'extension-lawn' },
+    { name: 'Front of Bruce Hall', width: Constants.Full, animationDirection: Constants.Down, vrImgName: 'front' }
   ];
 
-  constructor(props: IProps) {
-    super(props);
-    
-    this.handleLocationClick = this.handleLocationClick.bind(this);
-  }
-
-  public handleLocationClick(location: ILocationDetails): void {
+  public handleLocationClick = (location: ILocationDetails): void => {
     this.props.selectLocation(location);
   }
 

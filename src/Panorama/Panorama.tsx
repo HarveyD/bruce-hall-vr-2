@@ -14,21 +14,15 @@ interface IState {
 }
 
 class Panorama extends React.Component<IProps, IState> {
-  constructor(props: any) {
-    super(props);
-  }
-
   public componentDidMount(): void {
-    this.setState(() => {
-      return {
-        viewer: window.pannellum.viewer('panorama', {
-          autoLoad: false,
-          panorama: require(`../assets/vr-shots/${this.props.selectedLocation.vrImgName}.jpg`),
-          preview: require(`../assets/preview/${this.props.selectedLocation.vrImgName}.jpg`),
-          type: "equirectangular"
-        })
-      }
-    });
+    this.setState(
+      window.pannellum.viewer('panorama', {
+        autoLoad: false,
+        panorama: require(`../assets/vr-shots/${this.props.selectedLocation.vrImgName}.jpg`),
+        preview: require(`../assets/preview/${this.props.selectedLocation.vrImgName}.jpg`),
+        type: "equirectangular"
+      })
+    );
   }
 
   public render() {
