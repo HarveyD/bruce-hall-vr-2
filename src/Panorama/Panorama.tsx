@@ -7,25 +7,20 @@ declare var window: any;
 
 interface IProps {
   selectedLocation: ILocationDetails;
-  backEvent(): void;
 }
 
 interface IState {
-  selectedLocation: ILocationDetails;
   viewer: any;
 }
 
 class Panorama extends React.Component<IProps, IState> {
   constructor(props: any) {
     super(props);
-
-    this.goBack = this.goBack.bind(this);
   }
 
   public componentDidMount(): void {
     this.setState(() => {
       return {
-        selectedLocation: this.props.selectedLocation,
         viewer: window.pannellum.viewer('panorama', {
           autoLoad: false,
           panorama: require(`../assets/vr-shots/${this.props.selectedLocation.vrImgName}.jpg`),
@@ -34,10 +29,6 @@ class Panorama extends React.Component<IProps, IState> {
         })
       }
     });
-  }
-
-  public goBack(): void {
-    this.props.backEvent();
   }
 
   public render() {

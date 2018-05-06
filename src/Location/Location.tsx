@@ -18,10 +18,15 @@ class Location extends React.Component<IProps, {}> {
   constructor(props: IProps) {
     super(props);
 
-    this.handleClick = this.handleClick.bind(this);
+    this.locationClickEvent = this.locationClickEvent.bind(this);
+    this.animationEnded = this.animationEnded.bind(this);
   }
 
-  public handleClick() {
+  public animationEnded(): void {
+    console.log('animation ended');
+  }
+
+  public locationClickEvent() {
     this.props.handleClick(this.props.locationDetails);
   }
 
@@ -37,7 +42,7 @@ class Location extends React.Component<IProps, {}> {
     const previewImage = require(`../assets/preview/${this.props.locationDetails.vrImgName}.jpg`);
 
     return (
-      <div style={{ backgroundImage: `url(${previewImage})`}} className={`location ${width} ${this.getPosition()}`} onClick={(this.handleClick)}>
+      <div onTransitionEnd={this.animationEnded} style={{ backgroundImage: `url(${previewImage})`}} className={`location ${width} ${this.getPosition()}`} onClick={(this.locationClickEvent)}>
         <div className="overlay"/>
         <div className="preview-name"> { name } </div>
       </div>
