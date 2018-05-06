@@ -32,7 +32,6 @@
 }
 
 .location .preview-name {
-  filter: blur(0px);
   color: white;
   font-size: 2rem;
   position: absolute;
@@ -58,4 +57,10 @@
 
 .full {
   width: 100%;
+}
+
+@media (max-height: 768px) {
+  .location .preview-name {
+    font-size: 1.75rem;
+  }
 }

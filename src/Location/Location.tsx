@@ -26,7 +26,9 @@ class Location extends React.Component<IProps, {}> {
   }
 
   public getPosition(): string {
-    return this.props.visible ? '' : this.props.locationDetails.animationDirection;
+    return this.props.visible
+      ? ''
+      : this.props.locationDetails.animationDirection;
   }
 
   public render() {
@@ -35,7 +37,7 @@ class Location extends React.Component<IProps, {}> {
     const previewImage = require(`../assets/preview/${this.props.locationDetails.vrImgName}.jpg`);
 
     return (
-      <div style={{ backgroundImage: `url(${previewImage})` } } className={`location ${width} ${this.getPosition()}`} onClick={(this.handleClick)}>
+      <div style={{ backgroundImage: `url(${previewImage})`}} className={`location ${width} ${this.getPosition()}`} onClick={(this.handleClick)}>
         <div className="overlay"/>
         <div className="preview-name"> { name } </div>
       </div>
