@@ -26,18 +26,20 @@ class Location extends React.Component<IProps, {}> {
   }
 
   public getPosition(): string {
-    return this.props.visible ? '' : this.props.locationDetails.animationDirection;
+    return this.props.visible
+      ? ''
+      : this.props.locationDetails.animationDirection;
   }
 
   public render() {
     const { name, width } = this.props.locationDetails;
 
-    // const previewImage = require(`../../public/photos/${this.props.locationDetails.vrImgName}.png`);
+    const previewImage = require(`../assets/preview/${this.props.locationDetails.vrImgName}.jpg`);
 
     return (
-      <div className={`location ${width} ${this.getPosition()}`} onClick={(this.handleClick)}>
-        {/* <img className="preview" src='test' /> */}
-        <p> { name } </p>
+      <div style={{ backgroundImage: `url(${previewImage})`}} className={`location ${width} ${this.getPosition()}`} onClick={(this.handleClick)}>
+        <div className="overlay"/>
+        <div className="preview-name"> { name } </div>
       </div>
     );
   }

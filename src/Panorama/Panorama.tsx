@@ -23,31 +23,17 @@ class Panorama extends React.Component<IProps, IState> {
   }
 
   public componentDidMount(): void {
-    setTimeout(() => {
-      this.setState(() => {
-        return {
-          selectedLocation: this.props.selectedLocation,
-          viewer: window.pannellum.viewer('panorama', {
-            autoLoad: true,
-            panorama: this.props.selectedLocation.vrImgName,
-            type: "equirectangular"
-          })
-        }
-      });
-    }, 500);
-  }
-
-  public componentDidUpdate(prevProps: IProps, prevState: IState): IState {
-    this.state.viewer.destroy();
-
-    return {
-      selectedLocation: this.props.selectedLocation,
-      viewer: window.pannellum.viewer('panorama', {
-        autoLoad: true,
-        panorama: this.props.selectedLocation.vrImgName,
-        type: "equirectangular"
-      })
-    }
+    this.setState(() => {
+      return {
+        selectedLocation: this.props.selectedLocation,
+        viewer: window.pannellum.viewer('panorama', {
+          autoLoad: false,
+          panorama: require(`../assets/vr-shots/${this.props.selectedLocation.vrImgName}.jpg`),
+          preview: require(`../assets/preview/${this.props.selectedLocation.vrImgName}.jpg`),
+          type: "equirectangular"
+        })
+      }
+    });
   }
 
   public goBack(): void {
@@ -57,8 +43,6 @@ class Panorama extends React.Component<IProps, IState> {
   public render() {
     return (
       <div>
-        {/* <span className="title"> { this.props.selectedLocation.name } </span> */}
-        <button className="back-button" onClick={this.goBack}> Go back </button>
         <div id="panorama"/>
       </div>
     );
