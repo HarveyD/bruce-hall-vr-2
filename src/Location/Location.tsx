@@ -1,17 +1,11 @@
 import * as React from 'react';
 import './Location.css';
+import { LocationDetail } from './LocationDetail';
 
 interface IProps {
   visible: boolean;
-  locationDetails: ILocationDetails;
-  handleClick(locationName: ILocationDetails): void;
-}
-
-export interface ILocationDetails {
-  name: string;
-  width: string;
-  vrImgName: string;
-  animationDirection: string;
+  locationDetail: LocationDetail;
+  handleClick(locationName: LocationDetail): void;
 }
 
 function Location(props: IProps) {
@@ -20,20 +14,23 @@ function Location(props: IProps) {
   }
 
   const locationClickEvent = (): void => {
-    props.handleClick(props.locationDetails);
+    props.handleClick(props.locationDetail);
   }
 
   const getPosition = () => props.visible 
     ? ''
-    : props.locationDetails.animationDirection;
+    : props.locationDetail.animationDirection;
 
-  const { name, width } = props.locationDetails;
-  const previewImage = require(`../assets/preview/${props.locationDetails.vrImgName}.jpg`);
+  const { name, width } = props.locationDetail;
 
   return (
-    <div onTransitionEnd={transitionEnded} style={{ backgroundImage: `url(${previewImage})`}} className={`location ${width} ${getPosition()}`} onClick={(locationClickEvent)}>
-      <div className="overlay"/>
-      <div className="preview-name"> { name } </div>
+    <div 
+      onTransitionEnd={transitionEnded}
+      style={{ backgroundImage: `url(${props.locationDetail.previewImageUrl})`}} 
+      className={`location ${width} ${getPosition()}`} 
+      onClick={(locationClickEvent)}>
+        <div className="overlay"/>
+        <div className="preview-name"> { name } </div>
     </div>
   );
 }

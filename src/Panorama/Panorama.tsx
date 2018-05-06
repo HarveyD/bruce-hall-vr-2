@@ -1,28 +1,22 @@
 import * as React from 'react';
-import { ILocationDetails } from '../Location/Location';
 
+import { LocationDetail } from '../Location/LocationDetail';
 import './Panorama.css';
 
 declare var window: any;
 
 interface IProps {
-  selectedLocation: ILocationDetails;
+  selectedLocation: LocationDetail;
 }
 
-interface IState {
-  viewer: any;
-}
-
-class Panorama extends React.Component<IProps, IState> {
+class Panorama extends React.Component<IProps, {}> {
   public componentDidMount(): void {
-    this.setState(
-      window.pannellum.viewer('panorama', {
-        autoLoad: false,
-        panorama: require(`../assets/vr-shots/${this.props.selectedLocation.vrImgName}.jpg`),
-        preview: require(`../assets/preview/${this.props.selectedLocation.vrImgName}.jpg`),
-        type: "equirectangular"
-      })
-    );
+    window.pannellum.viewer('panorama', {
+      autoLoad: false,
+      panorama: this.props.selectedLocation.vrImageUrl,
+      preview: this.props.selectedLocation.previewImageUrl,
+      type: "equirectangular"
+    })
   }
 
   public render() {

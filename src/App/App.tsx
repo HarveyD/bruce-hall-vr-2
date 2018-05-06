@@ -2,23 +2,25 @@ import * as React from 'react';
 import Body from '../Body/Body';
 import Navbar from '../Navbar/Navbar';
 
-import { ILocationDetails } from '../Location/Location';
+import { LocationDetail } from '../Location/LocationDetail';
 
 import './App.css';
 
 interface IState {
-  selectedLocation: ILocationDetails;
+  selectedLocation: LocationDetail;
 }
 
 class App extends React.Component<{}, IState> {
-  public state = { selectedLocation: { } as ILocationDetails };
+  public state = { 
+    selectedLocation: { } as LocationDetail
+  };
 
-  public selectLocation = (location: ILocationDetails): void => {
+  public selectLocation = (location: LocationDetail): void => {
     this.setState({ selectedLocation: location });
   }
 
   public resetLocation = (): void => {
-    this.setState({ selectedLocation: { } as ILocationDetails });
+    this.setState({ selectedLocation: { } as LocationDetail });
   }
 
   public render() {
