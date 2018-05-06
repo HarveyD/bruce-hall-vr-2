@@ -11,13 +11,13 @@ interface IState {
 
 class Body extends React.Component<{}, IState> {
   public locations: ILocationDetails[] = [
-    { name: 'North Quad', width: 'half', animationDirection: 'left', vrImgName: 'https://pannellum.org/images/alma.jpg' },
-    { name: 'Dining Hall', width: 'half', animationDirection: 'right', vrImgName: 'https://pannellum.org/images/alma.jpg' },
-    { name: 'South Quad', width: 'half', animationDirection: 'left', vrImgName: 'https://pannellum.org/images/tocopilla.jpg' },
-    { name: 'Reception', width: 'half', animationDirection: 'right', vrImgName: 'https://pannellum.org/images/tocopilla.jpg' },
-    { name: 'Packard Quad', width: 'half', animationDirection: 'left', vrImgName: 'https://pannellum.org/images/tocopilla.jpg' },
-    { name: 'Extension Lawn', width: 'half', animationDirection: 'right', vrImgName: 'https://pannellum.org/images/tocopilla.jpg' },
-    { name: 'Front of Bruce Hall', width: 'full', animationDirection: 'bottom', vrImgName: 'https://pannellum.org/images/tocopilla.jpg' }
+    { name: 'North Quad', width: 'half', animationDirection: 'left', vrImgName: 'north-quad' },
+    { name: 'Dining Hall', width: 'half', animationDirection: 'right', vrImgName: 'dining-hall' },
+    { name: 'South Quad', width: 'half', animationDirection: 'left', vrImgName: 'south-quad' },
+    { name: 'Reception', width: 'half', animationDirection: 'right', vrImgName: 'reception' },
+    { name: 'Packard Quad', width: 'half', animationDirection: 'left', vrImgName: 'pac-quad' },
+    { name: 'Extension Lawn', width: 'half', animationDirection: 'right', vrImgName: 'extension-lawn' },
+    { name: 'Front of Bruce Hall', width: 'full', animationDirection: 'bottom', vrImgName: 'front' }
   ];
 
   constructor(props: any) {

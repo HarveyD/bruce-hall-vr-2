@@ -29,7 +29,7 @@ class Panorama extends React.Component<IProps, IState> {
           selectedLocation: this.props.selectedLocation,
           viewer: window.pannellum.viewer('panorama', {
             autoLoad: true,
-            panorama: this.props.selectedLocation.vrImgName,
+            panorama: require(`../assets/vr-shots/${this.props.selectedLocation.vrImgName}.jpg`),
             type: "equirectangular"
           })
         }
@@ -44,7 +44,8 @@ class Panorama extends React.Component<IProps, IState> {
       selectedLocation: this.props.selectedLocation,
       viewer: window.pannellum.viewer('panorama', {
         autoLoad: true,
-        panorama: this.props.selectedLocation.vrImgName,
+        panorama: require(`../assets/vr-shots/${this.props.selectedLocation.vrImgName}.jpg`),
+        preview: require(`../assets/preview/${this.props.selectedLocation.vrImgName}.jpg`),
         type: "equirectangular"
       })
     }
@@ -58,7 +59,7 @@ class Panorama extends React.Component<IProps, IState> {
     return (
       <div>
         {/* <span className="title"> { this.props.selectedLocation.name } </span> */}
-        <button className="back-button" onClick={this.goBack}> Go back </button>
+        <button className="back-button" onClick={this.goBack}> Back </button>
         <div id="panorama"/>
       </div>
     );
