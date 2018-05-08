@@ -9,23 +9,18 @@ interface IProps {
 }
 
 function Location(props: IProps) {
-  const transitionEnded = (event: any): void => {
-    console.log(event.propertyName);
-  }
-
   const locationClickEvent = (): void => {
     props.handleClick(props.locationDetail);
   }
 
-  const getPosition = () => props.visible 
-    ? ''
-    : props.locationDetail.animationDirection;
+  const getPosition = (): string => {
+    return props.visible ? '' : props.locationDetail.animationDirection;
+  } 
 
   const { name, width } = props.locationDetail;
 
   return (
-    <div 
-      onTransitionEnd={transitionEnded}
+    <div
       style={{ backgroundImage: `url(${props.locationDetail.previewImageUrl})`}} 
       className={`location ${width} ${getPosition()}`} 
       onClick={(locationClickEvent)}>

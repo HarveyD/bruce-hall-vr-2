@@ -14,10 +14,12 @@ interface IProps {
 }
 
 class Body extends React.Component<IProps, {}> {
-  private locations: LocationDetail[] = LocationList.Locations;
+  public locations: LocationDetail[] = LocationList.Locations;
 
   public handleLocationClick = (location: LocationDetail): void => {
     this.props.selectLocation(location);
+
+    this.setState({ transitionState: 'started' });
   }
 
   public hasSelectedLocation(): boolean {
@@ -36,8 +38,8 @@ class Body extends React.Component<IProps, {}> {
     return (
       <div className="body">
         { locations }
-        { this.hasSelectedLocation()
-          && <Panorama selectedLocation={this.props.selectedLocation}/> 
+        {/* { this.hasSelectedLocation() */}
+          <Panorama selectedLocation={this.props.selectedLocation}/> 
         }
       </div>
     );
