@@ -38,7 +38,7 @@ class Panorama extends React.Component<IProps, IState> {
       panorama: this.props.selectedLocation.vrImageUrl,
       preview: this.props.selectedLocation.previewImageUrl,
       type: "equirectangular"
-    })
+    });
   }
 
   public render() {
