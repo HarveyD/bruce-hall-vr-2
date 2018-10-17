@@ -25,7 +25,7 @@ class App extends React.Component<{}, IState> {
 
   public render() {
     return (
-      <div className="App">
+      <section className="app-container">
         <Navbar 
           locationTitle={this.state.selectedLocation.name} 
           goBack={this.resetLocation}
@@ -34,7 +34,7 @@ class App extends React.Component<{}, IState> {
           selectedLocation={this.state.selectedLocation} 
           selectLocation={this.selectLocation} 
         />
-      </div>
+      </section>
     );
   }
 }

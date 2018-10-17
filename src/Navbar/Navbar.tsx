@@ -12,13 +12,13 @@ function Navbar(props: IProps) {
   }
 
   return (
-    <div className="navbar">
+    <header className="navbar-container">
       <div className="title"> { props.locationTitle ? props.locationTitle : 'Bruce Hall VR Tour' } </div>
       {
         props.locationTitle &&
         <button className="back-button" onClick={ goBackEvent }> Back </button>
       }
-    </div>
+    </header>
   );
 }
 

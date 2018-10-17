@@ -1,7 +1,6 @@
-.navbar {
+.navbar-container {
   display: flex;
   flex: 1;  
-  background-color: darkblue;
   width: 100%;
   justify-content: space-between;
 }
@@ -26,6 +25,7 @@
   width: 10rem;
   margin: 0.25rem;
   transition: .25s font-size ease-in-out;
+  cursor: pointer;
 }
 
 .back-button:hover {

@@ -1,13 +1,11 @@
 .location {
   height: calc((100% / 4));
   background-size: cover;
-  background-repeat:no-repeat;
+  background-repeat: no-repeat;
   background-position: center center;
   z-index: 10;
-  
-  text-align: center;
 
-  transition: .5s transform ease-in-out;
+  transition: 0.5s transform ease-in-out;
 
   display: flex;
   justify-content: center;
@@ -26,8 +24,8 @@
 .location .overlay {
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, .5);
-  transition: .25s background-color ease-in-out;
+  background-color: rgba(0, 0, 0, 0.5);
+  transition: 0.25s background-color ease-in-out;
   z-index: 15;
 }
 
@@ -36,7 +34,7 @@
   font-size: 2rem;
   position: absolute;
   z-index: 20;
-  transition: .25s font-size ease-in-out;
+  transition: 0.25s font-size ease-in-out;
 }
 
 .left {

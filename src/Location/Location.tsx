@@ -8,7 +8,7 @@ interface IProps {
   handleClick(locationName: LocationDetail): void;
 }
 
-function Location(props: IProps) {
+const Location = (props: IProps) => {
   const locationClickEvent = (): void => {
     props.handleClick(props.locationDetail);
   }
