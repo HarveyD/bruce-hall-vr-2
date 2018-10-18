@@ -30,7 +30,9 @@ class Body extends React.Component<IProps, {}> {
     return (
       <section className="body-container">
         {this.renderLocations()}
-        {this.hasSelectedLocation() && <Panorama selectedLocation={this.props.selectedLocation} />}
+        {this.hasSelectedLocation() && (
+          <Panorama selectedLocation={this.props.selectedLocation} />
+        )}
       </section>
     );
   }
