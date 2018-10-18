@@ -21,4 +21,4 @@ yarn-debug.log*
 yarn-error.log*
 
 # photos
-src/assets/vr-shots/*
+src/assets/vr-shots/desktop*
