@@ -2,6 +2,7 @@
   "name": "bruce-hall-vr-2",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://www.harveydelaney.com/bruce-hall-vr-2",
   "dependencies": {
     "npm": "^5.8.0",
     "react": "^16.3.1",
