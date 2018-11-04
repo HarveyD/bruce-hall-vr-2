@@ -1,7 +1,9 @@
-import * as React from 'react';
+import * as React from "react";
 
-import { LocationDetail } from '../Location/LocationDetail';
-import './Panorama.css';
+import Constants from "src/constants";
+
+import { LocationDetail } from "../Location/LocationDetail";
+import "./Panorama.css";
 
 declare var window: any;
 
@@ -15,12 +17,12 @@ interface IState {
 
 class Panorama extends React.Component<IProps, IState> {
   public componentDidMount(): void {
-    this.setState({ 
-      viewer: window.pannellum.viewer('panorama', {
+    this.setState({
+      viewer: window.pannellum.viewer(Constants.PanoramaId, {
         autoLoad: false,
         panorama: this.props.selectedLocation.vrImageUrl,
         preview: this.props.selectedLocation.previewImageUrl,
-        type: "equirectangular"
+        type: Constants.PanoramaType
       })
     });
   }
@@ -33,19 +35,19 @@ class Panorama extends React.Component<IProps, IState> {
 
     this.state.viewer.destroy();
 
-    window.pannellum.viewer('panorama', {
+    window.pannellum.viewer(Constants.PanoramaId, {
       autoLoad: false,
       panorama: this.props.selectedLocation.vrImageUrl,
       preview: this.props.selectedLocation.previewImageUrl,
-      type: "equirectangular"
+      type: Constants.PanoramaType
     });
   }
 
   public render() {
     return (
-      <div>
-        <div id="panorama"/>
-      </div>
+      <React.Fragment>
+        <div id={Constants.PanoramaId} />
+      </React.Fragment>
     );
   }
 }

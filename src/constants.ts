@@ -5,4 +5,7 @@ export default class Constants {
 
     public static readonly Half = "half";
     public static readonly Full = "full";
+
+    public static readonly PanoramaId = "panorama";
+    public static readonly PanoramaType = "equirectangular";
 }
