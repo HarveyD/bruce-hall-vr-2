@@ -1,20 +1,9 @@
 export class LocationDetail {
-  public animationDirection: string;
-  public name: string;
-  public vrImgName: string;
-  public width: string;
-
   constructor(
-    animationDirection: string,
-    name: string,
-    vrImgName: string,
-    width: string
-  ) {
-    this.animationDirection = animationDirection;
-    this.name = name;
-    this.vrImgName = vrImgName;
-    this.width = width;
-  }
+    public animationDirection: string,
+    public name: string,
+    public vrImgName: string,
+  ) { }
 
   get vrImageUrl(): string {
     return this.isMobile()

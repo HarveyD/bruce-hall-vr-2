@@ -17,14 +17,14 @@ const Location: React.StatelessComponent<IProps> = (props: IProps) => {
     return props.visible ? "" : props.locationDetail.animationDirection;
   };
 
-  const { name, width } = props.locationDetail;
+  const { name } = props.locationDetail;
 
   return (
     <div
       style={{
         backgroundImage: `url(${props.locationDetail.previewImageUrl})`
       }}
-      className={`location ${width} ${getPosition()}`}
+      className={`location ${getPosition()}`}
       onClick={locationClickEvent}
     >
       <div className="overlay" />
