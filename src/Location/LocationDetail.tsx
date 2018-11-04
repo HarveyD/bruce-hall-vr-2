@@ -19,7 +19,7 @@ export class LocationDetail {
   get vrImageUrl(): string {
     return this.isMobile()
       ? require(`../assets/vr-shots/mobile/${this.vrImgName}.jpg`)
-      : require(`../assets/vr-shots/mobile/${this.vrImgName}.jpg`);
+      : require(`../assets/vr-shots/desktop/${this.vrImgName}.jpg`);
   }
 
   private isMobile(): boolean {
