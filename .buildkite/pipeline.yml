@@ -1,0 +1,13 @@
+steps:
+  - label: ":npm: NPM Install"
+    command: npm ci
+
+  - wait
+
+  - label: ":hammer: Build"
+    command: "./scripts/build.sh"
+
+  - wait
+
+  - label: ":rocket: Deploy"
+    command: echo I will build $APP_NAME
